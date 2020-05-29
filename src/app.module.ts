@@ -7,6 +7,10 @@ import { AppService } from './app.service';
 import { ReportsModule } from './reports/reports.module';
 import { CompaniesModule } from './companies/companies.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { SearchService } from './search/search.service';
+import { SearchController } from './search/search.controller';
+import { SearchModule } from './search/search.module';
+import { CompaniesService } from './companies/companies.service';
 
 @Module({
   imports: [
@@ -16,8 +20,9 @@ import { MongooseModule } from '@nestjs/mongoose';
       useNewUrlParser: true,
       useCreateIndex: true
     }),
+    SearchModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, SearchController],
+  providers: [AppService, SearchService],
 })
 export class AppModule {}

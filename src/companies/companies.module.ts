@@ -8,6 +8,7 @@ import { CompanySchema } from './schemas/companies.schema';
   imports: [
     MongooseModule.forFeature([{ name: 'Company', schema: CompanySchema }]),
   ], 
+  exports: [CompaniesService], 
   controllers: [CompaniesController],
   providers: [CompaniesService]
 })

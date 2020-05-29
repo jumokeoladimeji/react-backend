@@ -60,4 +60,10 @@ export class CompaniesService {
             .findByIdAndRemove(companyID);
         return deletedCompany;
     }
+
+    async queryOrGetCompanies(searchTerm): Promise<Company[]> {
+        const filter = {text: searchTerm}
+        const companies = await this.companyModel.find(filter).populate('reports').exec();
+        return companies;
+    }
 }
